@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+        <h1>Category Insert</h1>
+        <form role="form" method="post"  action="/danh-muc" >
+            <div class="form-group">
+                <label>Name</label>
+                <input class="form-control" onchange="validation()" id="name" name="name" type="text">
+            </div>
+            
+                    
+               
+            <button id="submit" type="submit"  class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-success">Reset</button>
+        </form>
+    </div>
+    <div class="col-lg-2"></div>
+</div>
+<script>
+    const validation=()=>{
+        const name=document.getElementById('name').value;
+        const price=document.getElementById('price').value;
+        const quantity=document.getElementById('quantity').value;
+        const released=document.getElementById('released').value;
+        const submit=document.getElementById('submit');
+        if(!name || name.trim().length==0||
+        !price || price.trim().length==0||Number(price)<0||Number(price)>1000000000){
+                submit.disabled=true;
+        }else{
+                submit.disabled=false;
+        }
+    }
+
+    const onChangeFile = () => {
+        const file = document.getElementById('image-file').files[0];
+        const reader = new FileReader();
+        reader.onload = e => {
+            document.getElementById('image-view').src = e.target.result;
+            document.getElementById('image-view').style.display = 'block';
+        }
+        reader.readAsDataURL(file);
+    }
+</script>

@@ -28,7 +28,7 @@ router.get('/', async function (req, res, next) {
   let {body,file}=req;
   let image=' ';
   if(file){
-    image=`http://10.82.148.105:3000/images/${file.filename}`
+    image=`http://192.168.1.27:3000/images/${file.filename}`
   }
   body={...body,image};
   await productController.insert(body);
@@ -65,15 +65,15 @@ router.get('/:id/edit', async function (req, res, next) {
  * method: put
  * desc: hiển thị chi tiết 1 sản phẩm
  */
-router.post('/',[upload.single('image')],async function (req, res, next) {
+router.post('/:id/edit',[upload.single('image')],async function (req, res, next) {
   // update 1 sản phẩm vào db
   let {body,file,params}=req;
   delete body.image;
   if (file) {
-    let image = `http://10.82.148.105/images/${file.filename}`
+    let image = `http://192.168.1.27:3000/images/${file.filename}`
     body = { ...body, image };
   }
- 
+  console.log(body);
   await productController.update(params.id,body);
   res.redirect('/san-pham');
 });

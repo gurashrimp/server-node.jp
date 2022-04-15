@@ -25,7 +25,7 @@ exports.update=async(id,product)=>{
     //     }
     //     return item;
     // })
-    await productModel.findByIdAndUpdate(id);
+    await productModel.findByIdAndUpdate(id,product);
 }
 var data = [{
     "_id": 1,

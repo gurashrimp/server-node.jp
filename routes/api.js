@@ -45,8 +45,6 @@ const productController=require('../components/products/controller');
   router.get('/products', async function (req, res, next) {
     // lấy danh sách sản phẩm từ database và hiển thị
     const products = await productController.getProducts();
-  
-  
     res.json(products);
   });
   router.get('/products/:id/detail', async function (req, res, next) {
